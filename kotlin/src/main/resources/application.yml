@@ -1,0 +1,19 @@
+server:
+  port: 8080
+  ip: 0.0.0.0
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Registry
+    username: postgres
+    password: 2451
+  security:
+    basic:
+      enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
