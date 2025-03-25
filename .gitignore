@@ -2,3 +2,6 @@
 /shelf/
 /workspace.xml
 /.idea
+/kotlin/.gradle
+/kotlin/build
+/kotlin/HELP.md
