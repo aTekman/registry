@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Онлайн-регистратура</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Шапка с навигацией -->
+    <header>
+        <div class="logo">Медицинский центр</div>
+        <div class="nav-buttons">
+            <button class="nav-button login-btn" id="loginBtn">Войти</button>
+            <button class="nav-button register-btn" id="registerBtn">Записаться на приём</button>
+        </div>
+    </header>
+    
+    <!-- Основной контент -->
+    <div class="main-container">
+        <div class="content-box">
+            <div class="right-box">
+                <h1>Наши преимущества</h1>
+                <ul>
+                    <li>Полный перечень работающих специалистов с возможностью записи на приём на удобное для Вас время</li>
+                    <li>Возможность оценить приём или перенести его на другое время</li>
+                    <li>Отслеживание статуса приёма в реальном времени в личном кабинете: отклонён, принят на запись или уже пройден</li>
+                    <li>История приёмов с их результатами и комментариями от специалиста в личном кабинете</li>
+                    <li>Минимум информации для регистрации личного кабинета</li>
+                    <li>Быстрая и удобная запись на приём в реальном времени</li>
+                </ul>
+                
+                <div class="action-buttons">
+                    <a href="#" class="action-button action-register" id="actionRegisterBtn">Записаться на приём</a>
+                    <a href="#" class="action-button action-login" id="actionLoginBtn">Войти</a>
+                </div>
+            </div>
+            
+            <div class="left-box">
+                <h1>О нас</h1>
+                <p>Во время основания нашего медицинского центра было решено, что традиционный формат регистратуры с бумагами и очередями в современном мире с его стремительными темпами жизни уже утратил актуальность. У людей зачастую нет времени на это, в связи с чем забота о себе раз за разом откладывается на следующую неделю. Мы беспокоимся о здоровье поколений, поэтому стараемся облегчить заботу о нём, ведь это - самое главное. В этих целях была разработана онлайн-регистратура, на главной странице которой Вы сейчас находитесь. Здесь вы сможете ознакомиться со списком специалистов нашего центра и запланировать приём у одного или нескольких из них. Благодаря продуманной системе это не опимет у Вас много времени: для регистрации понадобится вести данные лишь нескольких основных документов, а для записи на приём - просто перейти на соответствующую страницу сайта. И будьте здоровы!</p>
+            </div>
+        </div>
+    </div>
+    
+    
+    <footer>
+        <div class="footer-contacts">
+            <div>Адрес: ул. Медицинская, 3</div>
+            <div>Телефон регистратуры: +7(343)777-88-66</div>
+            <div>Электронная почта: 4musketer.reqistry@yandex.ru</div>
+        </div>
+        <div class="footer-info">© 2023 Медицинский центр. Все права защищены.</div>
+    </footer>
+
+    <!-- Модальное окно входа/регистрации -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Войти или зарегистрироваться</h2>
+                <span class="close" id="closeModalBtn">&times;</span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Введите ваш email">
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" placeholder="Введите пароль">
+            </div>
+            <div class="form-footer">
+                <div class="form-links">
+                    <a href="#">Восстановление пароля</a>
+                    <a href="#">Вход / регистрация через госуслуги</a>
+                </div>
+                <button class="submit-btn">Войти</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/modal.js"></script>
+</body>
+</html>
