@@ -13,14 +13,17 @@ class UserService(private val userRepository: UserRepository) {
     fun getUserByMedPolicy(medPolicy: String):User? = userRepository.findByMedPolicy(medPolicy)
     fun getUserByPassport(passport: String):User? = userRepository.findByPassport(passport)
     fun getUserBySnils(snils: String):User? = userRepository.findBySnils(snils)
+    fun getUserByEmail(email: String):User? = userRepository.findByEmail(email)
+    fun getUserByPhone(phone: String):User? = userRepository.findByPhone(phone)
     fun createUser(user: User): User{
         val hashedPassword = passwordEncoder.encode(user.password)
         val newUser = user.copy(password = hashedPassword)
         return userRepository.save(newUser)
     }
-    fun validatePassword(rawPassword: String, hashedPassword: String): Boolean {
-        return passwordEncoder.matches(rawPassword, hashedPassword)
+    fun validatePassword(user: User, password: String): Boolean {
+            return if(passwordEncoder.matches(password, user.password)) true else false
     }
+
     fun updateUser(updUser: User, id: Long): User?{
         val existsUser: User = userRepository.findById(id).orElse(null)
         if (existsUser == null) {return null}

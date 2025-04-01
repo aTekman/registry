@@ -5,13 +5,13 @@ import com.example.kotlin.service.UserService
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/v0.1/user")
 class UserController(private val userService: UserService) {
 
     @GetMapping
     fun getUsers(): List<User> = userService.getAllUsers()
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     fun getById(@PathVariable id: Long): User? = userService.getUserById(id)
 
     @PostMapping

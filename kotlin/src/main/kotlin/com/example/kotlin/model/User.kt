@@ -29,4 +29,8 @@ data class User(
     val medPolicy: String,
 
     @Column(name = "password", nullable = false, columnDefinition = "TEXT")
-    val password: String)
+    val password: String,
+
+    @Column(name = "role", nullable = false, columnDefinition = "TEXT")
+    val role: String
+)
