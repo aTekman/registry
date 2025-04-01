@@ -24,8 +24,8 @@ class UserService(private val userRepository: UserRepository) {
             return if(passwordEncoder.matches(password, user.password)) true else false
     }
 
-    fun updateUser(updUser: User, id: Long): User?{
-        val existsUser: User = userRepository.findById(id).orElse(null)
+    fun updateUser(updUser: User, email: String): User?{
+        val existsUser: User? = userRepository.findByEmail(email)
         if (existsUser == null) {return null}
 
         else{
@@ -38,12 +38,13 @@ class UserService(private val userRepository: UserRepository) {
                 snils = updUser.snils,
                 medPolicy = updUser.medPolicy,
                 password = if(updUser.password.isNotBlank()) passwordEncoder.encode(updUser.password) else existsUser.password,
+                role = existsUser.role
             )
             return userRepository.save(updUser)
         }
     }
-    fun deleteUser(id: Long){
-        val existsUser: User = userRepository.findById(id).orElse(null)
+    fun deleteUser(email: String){
+        val existsUser: User? = userRepository.findByEmail(email)
         if (existsUser == null) {return}
 
         else{

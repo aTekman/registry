@@ -8,21 +8,21 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/v0.1/user")
 class UserController(private val userService: UserService) {
 
-    @GetMapping
+    @GetMapping("/all")
     fun getUsers(): List<User> = userService.getAllUsers()
 
     @GetMapping("/id/{id}")
     fun getById(@PathVariable id: Long): User? = userService.getUserById(id)
 
+    @GetMapping("email/{email}")
+    fun getByEmail(@PathVariable email: String): User? = userService.getUserByEmail(email)
+
     @PostMapping
     fun createUser(@RequestBody user: User): User = userService.createUser(user)
 
-    @PutMapping("/{id}")
-    fun updateUser(@PathVariable id: Long, @RequestBody updUser: User): User?{
-        return userService.updateUser(updUser, id)
-    }
+    @PutMapping("/email/{email}")
+    fun updateUser(@PathVariable email: String, @RequestBody updUser: User): User? = userService.updateUser(updUser, email)
 
-    @DeleteMapping("/{id}")
-    fun deleteUser(@PathVariable id: Long) = userService.deleteUser(id)
-
+    @DeleteMapping("/email/{email}")
+    fun deleteUser(@PathVariable email: String) = userService.deleteUser(email)
 }
