@@ -1,8 +1,8 @@
-package com.example.kotlin.security
+package registry.ru.security
 
-import com.example.kotlin.component.JwtUtil
-import com.example.kotlin.model.User
-import com.example.kotlin.service.UserService
+import registry.ru.component.JwtUtil
+import registry.ru.model.User
+import registry.ru.service.UserService
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse

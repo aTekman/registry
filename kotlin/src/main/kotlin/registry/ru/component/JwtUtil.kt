@@ -1,4 +1,4 @@
-package com.example.kotlin.component
+package registry.ru.component
 
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts

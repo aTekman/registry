@@ -1,6 +1,6 @@
-package com.example.kotlin.config
+package registry.ru.config
 
-import com.example.kotlin.security.JwtAuthFilter
+import registry.ru.security.JwtAuthFilter
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -36,7 +36,7 @@ class SecurityConfig(
 
                 it.requestMatchers("/api/v0.1/admin/**").hasAuthority("ADMIN")
                 it.requestMatchers("/api/v0.1/med/**").hasAuthority("MEDIC")
-                it.requestMatchers("api/v0.1/user/**").hasAuthority("USER")
+                it.requestMatchers("/api/v0.1/user/**").hasAuthority("USER")
                 it.anyRequest().authenticated()
             }
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter::class.java)

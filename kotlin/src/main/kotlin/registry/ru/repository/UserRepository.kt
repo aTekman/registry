@@ -1,6 +1,6 @@
-package com.example.kotlin.repository
+package registry.ru.repository
 
-import com.example.kotlin.model.User
+import registry.ru.model.User
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

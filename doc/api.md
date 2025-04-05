@@ -13,7 +13,7 @@ GET http://localhost:8080/api/v0.1/user/all
 Где: <br>
 `localhost:8080` - адрес сервера <br>
 `/api/v0.1` - версия апи <br>
-`user` - название роли или сервиса <br>
+`/user` - название роли или сервиса <br>
 `/all` - эндпоинт
 
 ---
@@ -63,7 +63,6 @@ curl --request POST \
     "passport": "1234567291",
     "snils": "12345677901",
     "medPolicy": "123456789033457",
-    "password": "$2a$10$GT1bob/O3gJbjq9EuNUzPOKZ6E2CFvBFOwj9suPYdFQtSaYHZACxC",
     "role": "USER"
   }
 }
@@ -114,17 +113,17 @@ curl --request POST \
 
 где: <br>
 
-| Параметр  | Значение                                               |
-|-----------|--------------------------------------------------------|
-| birthday  | День рождения                                          |
-| email     | Email пользователя (должен быть уникальным)            |
-| fullName  | ФИО                                                    |
-| medPolicy | Мед. полис (должен быть уникальным, длина не более 16) |
-| passport  | Паспорт (должен быть уникальным, длина не более 10)    |
-| phone     | Номер телефона (должен быть уникальным)                |
-| snils     | Снилс (должен быть уникальным, длина не более 11)      |
-| password  | Пароль                                                 |
-| role      | Роль человека (USER, MEDIC, ADMIN)                     |
+| Параметр  | Значение                                                   |
+|-----------|------------------------------------------------------------|
+| birthday  | День рождения                                              |
+| email     | Email пользователя (должен быть уникальным)                |
+| fullName  | ФИО                                                        |
+| medPolicy | Мед. полис (должен быть уникальным, длина не более 16)     |
+| passport  | Паспорт (должен быть уникальным, длина не более 10)        |
+| phone     | Номер телефона (должен быть уникальным)                    |
+| snils     | Снилс (должен быть уникальным, длина не более 11)          |
+| password  | Пароль                                                     |
+| role      | Роль человека (USER, MEDIC, ADMIN). При = null, будет USER |
 ### Ответ:
 
 ---
@@ -142,7 +141,6 @@ curl --request POST \
     "passport": "1234567890",
     "phone": "12345678901",
     "snils": "12345678901",
-    "password": "hashed",
     "role": "USER"
   }
 }
@@ -205,7 +203,6 @@ curl --request GET \
     "passport": "1234567291",
     "snils": "12345677901",
     "medPolicy": "123456789033457",
-    "password": "$2a$10$GT1bob/O3gJbjq9EuNUzPOKZ6E2CFvBFOwj9suPYdFQtSaYHZACxC",
     "role": "USER"
   }
 ]
@@ -214,6 +211,7 @@ curl --request GET \
 Status Code = 200 OK
 ```
 
+---
 #### Просроченный/неверный токен:
 
 ```http
@@ -260,7 +258,6 @@ curl --request GET \
   "passport": "1234567291",
   "snils": "12345677901",
   "medPolicy": "123456789033457",
-  "password": "$2a$10$GT1bob/O3gJbjq9EuNUzPOKZ6E2CFvBFOwj9suPYdFQtSaYHZACxC",
   "role": "USER"
 }
 ```
@@ -273,11 +270,14 @@ Status Code = 200 OK
 #### Несуществующий id/email:
 
 ```json
-null
+{
+  "error": "Не найдено пользователя с email/id <email/id>"
+}
 ```
 ```http
-Status Code = 200 OK
+Status Code = 400 Bad Request
 ```
+
 
 ---
 
@@ -289,10 +289,10 @@ Status Code = 403 Forbidden
 
 ---
 
-### Обновление пользователя (не работает):
+### Обновление пользователя:
 
 ```http
-POST http://localhost:8080/api/v0.1/user/
+PUT http://localhost:8080/api/v0.1/user/email/<email>
 ```
 
 #### Запрос
@@ -310,7 +310,6 @@ curl --request PUT \
     "passport": "1234567890",
     "phone": "12345678901",
     "snils": "12345678901",
-    "password": "12345",
     "role": "USER"
 }'
 ```
@@ -329,6 +328,7 @@ curl --request PUT \
 | snils     | Снилс (должен быть уникальным, длина не более 11) |
 | password  | Пароль                                        |
 | role      | Роль человека (USER, MEDIC, ADMIN)            |
+Поля, которые не трубется обновлять может = null
 ### Ответ:
 
 ---
@@ -336,8 +336,7 @@ curl --request PUT \
 #### Правильный токен:
 
 ```json
-[
-  {
+{
     "id": 11,
     "fullName": "Иван Иванов3",
     "birthday": "12.3.4567",
@@ -346,15 +345,26 @@ curl --request PUT \
     "passport": "1234567291",
     "snils": "12345677901",
     "medPolicy": "123456789033457",
-    "password": "$2a$10$GT1bob/O3gJbjq9EuNUzPOKZ6E2CFvBFOwj9suPYdFQtSaYHZACxC",
     "role": "USER"
-  }
-]
+}
 ```
 ```http
 Status Code = 200 OK
 ```
 
+---
+#### Несуществующий email:
+
+```json
+{
+  "error": "Не найдено пользователя с email <email>"
+}
+```
+```http
+Status Code = 400 Bad Request
+```
+
+---
 #### Просроченный/неверный токен:
 
 ```http
@@ -363,17 +373,17 @@ Status Code = 403 Forbidden
 
 ---
 
-### Запрос по id или email:
+### Удаление пользователя:
 
 ```http
-GET http://localhost:8080/api/v0.1/user/all
+DELETE http://localhost:8080/api/v0.1/user/email/<email>
 ```
 
 #### Запрос
 
 ```curl
-curl --request GET \
-  --url http://localhost:8080/api/v0.1/user/(id или email)/<id или email> \
+curl --request DELETE \
+  --url http://localhost:8080/api/v0.1/user/email/<email> \
   --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ...'
 ```
@@ -383,8 +393,7 @@ curl --request GET \
 | Параметр                | Значение                                                 |
 |-------------------------|----------------------------------------------------------|
 | --header 'Authorization | Bearer ${token (получается при авторизации/регистрации)} |
-| id                      | id искомого пользователя                                 |
-| email                   | email искомого пользователя                              |
+| email                   | email удаляемого пользователя                            |
 ### Ответ:
 
 ---
@@ -393,16 +402,7 @@ curl --request GET \
 
 ```json
 {
-  "id": 11,
-  "fullName": "Иван Иванов3",
-  "birthday": "12.3.4567",
-  "phone": "88005553513",
-  "email": "12345",
-  "passport": "1234567291",
-  "snils": "12345677901",
-  "medPolicy": "123456789033457",
-  "password": "$2a$10$GT1bob/O3gJbjq9EuNUzPOKZ6E2CFvBFOwj9suPYdFQtSaYHZACxC",
-  "role": "USER"
+  "message":"Пользователь успешно удален"
 }
 ```
 ```http
@@ -411,13 +411,15 @@ Status Code = 200 OK
 
 ---
 
-#### Несуществующий id/email:
+#### Несуществующий email:
 
 ```json
-null
+{
+  "error": "Не найдено пользователя с email <email>"
+}
 ```
 ```http
-Status Code = 200 OK
+Status Code = 400 Bad Request
 ```
 
 ---
