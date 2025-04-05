@@ -1,5 +1,6 @@
-package com.example.kotlin.model
+package registry.ru.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 
 @Entity
@@ -28,5 +29,10 @@ data class User(
     @Column(name = "medPolicy",unique = true, nullable = false, length = 16)
     val medPolicy: String,
 
+    @JsonIgnore
     @Column(name = "password", nullable = false, columnDefinition = "TEXT")
-    val password: String)
+    val password: String,
+
+    @Column(name = "role", nullable = false, columnDefinition = "TEXT")
+    val role: String
+)
