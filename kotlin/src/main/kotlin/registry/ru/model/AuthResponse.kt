@@ -2,5 +2,5 @@ package registry.ru.model
 
 data class AuthResponse(
     val token: String,
-    val user: User
+    val user: Any
 )

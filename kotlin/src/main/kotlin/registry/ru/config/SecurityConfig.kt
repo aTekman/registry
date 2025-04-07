@@ -35,8 +35,8 @@ class SecurityConfig(
                 it.requestMatchers("/api/v0.1/auth/**").permitAll()
 
                 it.requestMatchers("/api/v0.1/admin/**").hasAuthority("ADMIN")
-                it.requestMatchers("/api/v0.1/med/**").hasAuthority("MEDIC")
-                it.requestMatchers("/api/v0.1/user/**").hasAuthority("USER")
+                it.requestMatchers("/api/v0.1/med/**").hasAnyAuthority("MEDIC","ADMIN")
+                it.requestMatchers("/api/v0.1/user/**").hasAnyAuthority("USER","MEDIC","ADMIN")
                 it.anyRequest().authenticated()
             }
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter::class.java)

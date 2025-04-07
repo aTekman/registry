@@ -8,6 +8,5 @@ data class UserRegisterRequest(
     val passport: String,
     val phone: String,
     val snils: String,
-    val password: String,
-    val role: String? = null
+    val password: String
 )
