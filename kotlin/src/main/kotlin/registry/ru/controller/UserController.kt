@@ -33,7 +33,7 @@ class UserController(private val userService: UserService, private val tiketServ
             } catch (e: Exception) {
                 return ResponseEntity.badRequest().body(Error("Неверно задан статус"))
             }
-            if (tiket.date > LocalDate.now().plusDays(1).atStartOfDay()) return ResponseEntity.badRequest().body(Error("Неверно выбрано время"))
+            if (tiket.date < LocalDate.now().plusDays(1).atStartOfDay()) return ResponseEntity.badRequest().body(Error("Неверно выбрано время"))
             val newTiket: Tiket = Tiket(
                 UUID.randomUUID().toString(),
                 tiket.date,
@@ -43,10 +43,13 @@ class UserController(private val userService: UserService, private val tiketServ
                 parsedStatus,
                 user)
             tiketService.createNewTiket(newTiket)
-            return ResponseEntity.ok().body(listOf("message: Запись успешно отправлена на подтверждение", newTiket))
+            return ResponseEntity.ok().body(Response("Запись успешно отправлена на подтвержнение", newTiket))
         }
         return ResponseEntity.badRequest().body(Error("Пользователь с id ${tiket.user} не найден"))
     }
+
+    @PutMapping("/tikets/cancel/{id}")
+    fun cancelTiket(@PathVariable id: String): ResponseEntity<Any> = tiketService.cancelTiket(id)
 
     @GetMapping("/id/{id}")
     fun getUserById(@PathVariable id: String): ResponseEntity<Any> {

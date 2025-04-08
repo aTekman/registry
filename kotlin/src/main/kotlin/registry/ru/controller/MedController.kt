@@ -1,11 +1,13 @@
 package registry.ru.controller
 
+import org.apache.catalina.Executor
 import registry.ru.model.*
 import registry.ru.service.UserService
 import org.springframework.web.bind.annotation.*
 import org.springframework.http.ResponseEntity
 import registry.ru.service.StaffService
 import registry.ru.service.TiketService
+import java.time.LocalDate
 import java.util.UUID
 
 @RestController
@@ -14,11 +16,17 @@ class MedController(private val userService: UserService, private val tiketServi
     @GetMapping("/tikets/all")
     fun getAllTikets(): List<Tiket> = tiketService.getAllTikets()
 
+    @GetMapping("/tikets/status/{status}")
+    fun getTiketsByStatus(@PathVariable status: String): ResponseEntity<Any> = tiketService.getTiketsByStatus(status)
+
     @PostMapping("/tikets/new")
     fun createNewTiket(@RequestBody tiket: TiketCreateRequest): ResponseEntity<Any> {
         val user: User? = userService.getUserById(tiket.user)
         user?.let {
-            val parsedStatus = TiketStatus.valueOf(tiket.status?: TiketStatus.подтверждается.toString()).toString()
+            val parsedStatus = try{
+                TiketStatus.valueOf((tiket.status?: TiketStatus.подтверждается.toString()).lowercase()).toString()
+            } catch (e: Exception) {return ResponseEntity.badRequest().body(Error("Неверно передан статус"))}
+            if (tiket.date < LocalDate.now().plusDays(1).atStartOfDay()) return ResponseEntity.badRequest().body(Error("Неверно выбрано время"))
             val newTiket: Tiket = Tiket(UUID.randomUUID().toString(),
             tiket.date,
             tiket.description,
@@ -27,32 +35,23 @@ class MedController(private val userService: UserService, private val tiketServi
             parsedStatus,
             user)
             tiketService.createNewTiket(newTiket)
-        return ResponseEntity.ok().body(listOf("message: Запись успешно создана", newTiket))
+        return ResponseEntity.ok().body(Response("Запись успешно создана", newTiket))
         }
         return ResponseEntity.badRequest().body(Error("Пользователь с id ${tiket.user} не найден"))
     }
 
-    @PutMapping("/tikets/update/")
-    fun updateTiket(@RequestBody tiket: TiketCreateRequest): ResponseEntity<Any> {
-        val user: User? = userService.getUserById(tiket.user)
-        user?.let {
-            tiket.status?: return ResponseEntity.badRequest().body(Error("Неверно задан статус"))
-            val parsedStatus = try {
-                TiketStatus.valueOf(tiket.status.lowercase()).toString()
-            } catch (e: Exception) {
-                return ResponseEntity.badRequest().body(Error("Неверно задан статус"))
+    @PutMapping("/tikets/update/{id}")
+    fun updateTiket(@PathVariable id: String, @RequestBody tiket: TiketRequest, ): ResponseEntity<Any> {
+        val existTiket: Tiket? = tiketService.getTiketById(id)
+        existTiket?.let {
+            tiket.user?.let {
+                val user = userService.getUserById(tiket.user) ?: return ResponseEntity.badRequest()
+                    .body(Error("Неверно указан пользователь"))
+                return tiketService.updateTiket(id, tiket, user)
             }
-            val newTiket: Tiket = Tiket(UUID.randomUUID().toString(),
-                tiket.date,
-                tiket.description,
-                tiket.results,
-                tiket.doctor,
-                parsedStatus,
-                user)
-            tiketService.createNewTiket(newTiket)
-            return ResponseEntity.ok().body(listOf("message: Запись успешно создана", newTiket))
+            return tiketService.updateTiket(id, tiket, existTiket.user)
         }
-        return ResponseEntity.badRequest().body(Error("Пользователь с id ${tiket.user} не найден"))
+        return ResponseEntity.badRequest().body(Error("Не найдено записи с id $id"))
     }
 
     @GetMapping("tikets/id/{id}")
@@ -75,5 +74,8 @@ class MedController(private val userService: UserService, private val tiketServi
         val doctor = staffService.getStaffById(id)?: return ResponseEntity.badRequest().body(Error("Не найдено пользователя с id $id"))
         return ResponseEntity.ok().body(doctor)
     }
+
+    @DeleteMapping("id/{id}")
+    fun deleteDoctor(@PathVariable id: String): ResponseEntity<Any> = staffService.deleteStaff(id)
 }
 

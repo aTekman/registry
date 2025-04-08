@@ -21,12 +21,12 @@ class AuthController(
         val user = userService.getUserByEmail(request.email)?: staffService.getStaffByEmail(request.email)?: return ResponseEntity.badRequest().body(Error("Пользователь не найден"))
         if (user is User) {
             if (!userService.validatePassword(user, request.password)) return ResponseEntity.badRequest().body(Error("Неверный пароль"))
-            val token = jwtUtil.generateToken(user.email)
+            val token = jwtUtil.generateToken(user.id)
             return ResponseEntity.ok(AuthResponse(token, user))
         }
         else if (user is Staff){
             if (!staffService.validatePassword(user, request.password)) return ResponseEntity.badRequest().body(Error("Неверный пароль"))
-            val token = jwtUtil.generateToken(user.email)
+            val token = jwtUtil.generateToken(user.id)
             return ResponseEntity.ok(AuthResponse(token, user))
         }
         return ResponseEntity.badRequest().body(Error("Не найден пользователь"))
@@ -34,12 +34,10 @@ class AuthController(
 
     @PostMapping("/register")
     fun register(@RequestBody request: UserRegisterRequest): ResponseEntity<Any> {
-        println("User")
         return userService.createUser(request)
     }
     @PostMapping("/register/staff")
     fun register(@RequestBody request: StaffRegisterRequest): ResponseEntity<Any> {
-        println("staff")
         if (request.role == "USER") return ResponseEntity.badRequest().body(Error("Неправильно задана роль"))
         else return staffService.createStaff(request)
     }
