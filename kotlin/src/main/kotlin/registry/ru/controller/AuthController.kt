@@ -34,12 +34,10 @@ class AuthController(
 
     @PostMapping("/register")
     fun register(@RequestBody request: UserRegisterRequest): ResponseEntity<Any> {
-        println("User")
         return userService.createUser(request)
     }
     @PostMapping("/register/staff")
     fun register(@RequestBody request: StaffRegisterRequest): ResponseEntity<Any> {
-        println("staff")
         if (request.role == "USER") return ResponseEntity.badRequest().body(Error("Неправильно задана роль"))
         else return staffService.createStaff(request)
     }
