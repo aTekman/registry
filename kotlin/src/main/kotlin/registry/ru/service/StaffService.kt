@@ -34,7 +34,7 @@ class StaffService(private val staffRepository: StaffRepository, private val jwt
             role = role
         ))
         staffRepository.save(newStaff)
-        val token = jwtUtil.generateToken(newStaff.email)
+        val token = jwtUtil.generateToken(newStaff.id)
         return ResponseEntity.ok().body(AuthResponse(token, newStaff))
     }
     fun updateStaff(staffRequest: StaffRequest, id: String): ResponseEntity<Any> {
@@ -58,6 +58,14 @@ class StaffService(private val staffRepository: StaffRepository, private val jwt
             return ResponseEntity.ok().body(updStaff)
         }
         return ResponseEntity.badRequest().body(Error("Нет пользователя с id $id"))
+    }
+    fun deleteStaff(id: String): ResponseEntity<Any> {
+        val existStaff = staffRepository.findById(id).orElse(null)
+        existStaff?.let {
+            staffRepository.delete(existStaff)
+            return ResponseEntity.ok().body(Response("Пользователь успешно удален"))
+        }
+        return ResponseEntity.badRequest().body(Error("Пользователь не найден"))
     }
     fun validatePassword(user: Staff, password: String): Boolean {
         return if(passwordEncoder.matches(password, user.password)) true else false

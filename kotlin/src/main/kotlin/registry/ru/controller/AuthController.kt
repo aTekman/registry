@@ -21,12 +21,12 @@ class AuthController(
         val user = userService.getUserByEmail(request.email)?: staffService.getStaffByEmail(request.email)?: return ResponseEntity.badRequest().body(Error("Пользователь не найден"))
         if (user is User) {
             if (!userService.validatePassword(user, request.password)) return ResponseEntity.badRequest().body(Error("Неверный пароль"))
-            val token = jwtUtil.generateToken(user.email)
+            val token = jwtUtil.generateToken(user.id)
             return ResponseEntity.ok(AuthResponse(token, user))
         }
         else if (user is Staff){
             if (!staffService.validatePassword(user, request.password)) return ResponseEntity.badRequest().body(Error("Неверный пароль"))
-            val token = jwtUtil.generateToken(user.email)
+            val token = jwtUtil.generateToken(user.id)
             return ResponseEntity.ok(AuthResponse(token, user))
         }
         return ResponseEntity.badRequest().body(Error("Не найден пользователь"))

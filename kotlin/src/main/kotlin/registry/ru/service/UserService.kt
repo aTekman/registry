@@ -42,7 +42,7 @@ class UserService(private val userRepository: UserRepository, private val jwtUti
             hashedPassword,
             role)
         userRepository.save(newUser)
-        val token = jwtUtil.generateToken(newUser.email)
+        val token = jwtUtil.generateToken(newUser.id)
         return ResponseEntity.ok().body(AuthResponse(token, newUser))
     }
     fun validatePassword(user: User, password: String): Boolean {
