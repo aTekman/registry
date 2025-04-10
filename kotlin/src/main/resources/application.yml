@@ -17,3 +17,11 @@ spring:
       hibernate:
         format_sql: false
     show-sql: false
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: health
+    endpoint:
+      health:
+        show-details: always
