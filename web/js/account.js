@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-    
+    // Проверка авторизации
+    if(localStorage.getItem('isAuthenticated') !== 'true') {
+        window.location.href = 'pacient.html';
+        return;
+    }
+
+    // Получаем элементы
     const transferBtns = document.querySelectorAll('.transfer-btn');
     const cancelBtns = document.querySelectorAll('.cancel-btn');
     const confirmBtns = document.querySelectorAll('.confirm-btn');
@@ -7,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const changePwdBtn = document.querySelector('.change-pwd-btn');
     const logoutBtn = document.querySelector('.logout-btn');
 
+    // Обработчики кнопок
     transferBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             alert('Функция переноса приёма будет реализована позже');
@@ -27,16 +34,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    editBtn.addEventListener('click', function() {
+    editBtn?.addEventListener('click', function() {
         alert('Редактирование данных будет доступно позже');
     });
 
-    changePwdBtn.addEventListener('click', function() {
+    changePwdBtn?.addEventListener('click', function() {
         alert('Форма смены пароля будет открыта');
     });
 
-    logoutBtn.addEventListener('click', function() {
+    logoutBtn?.addEventListener('click', function() {
         if(confirm('Вы уверены, что хотите выйти?')) {
+            localStorage.removeItem('isAuthenticated');
             window.location.href = 'index.html';
         }
     });
