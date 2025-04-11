@@ -11,7 +11,16 @@
     <header>
         <div class="logo">Медицинский центр</div>
         <div class="nav-buttons">
-            <a href="index.html" class="nav-button back-btn">Вернуться на главную</a>
+            <a href="#" class="nav-button back-btn">Запись на приём</a>
+            <div class="user-nav">
+                <div class="user-nav-btn" id="userNavBtn">
+                    <span id="userNameDisplay">Войти</span>
+                    <div class="user-dropdown">
+                        <a href="personal-account.html" class="dropdown-item">Личный кабинет</a>
+                        <a href="#" class="dropdown-item logout">Выйти</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
     
@@ -118,6 +127,9 @@
         <div class="footer-info">© 2023 Медицинский центр. Все права защищены.</div>
     </footer>
 
-    <script src="js/specialists.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/user-nav.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/account.js"></script>
 </body>
 </html>
