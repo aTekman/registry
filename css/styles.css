@@ -1,0 +1,609 @@
+body {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Футер */
+header {
+    background-color: #21B4A3;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-button {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.login-btn {
+    background-color: white;
+    color: #21B4A3;
+}
+
+.register-btn {
+    background-color: #4FAA39;
+    color: white;
+}
+
+/* Основной контент */
+.main-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    background-color: rgba(255, 255, 255, 0.85); 
+    min-height: calc(100vh - 150px); 
+    box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.1); 
+}
+
+.content-box {
+    width: 90%;
+    max-width: 1000px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    padding: 30px;
+    display: flex;
+    gap: 30px;
+}
+
+.left-box, .right-box {
+    flex: 1;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.left-box {
+    background-color: #f9f9f9;
+}
+
+.right-box {
+    border: 2px solid #4FAA39;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    color: #21B4A3;
+    margin-top: 0;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.action-buttons {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 20px;
+}
+
+.action-button {
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+.action-register {
+    background-color: #4FAA39;
+    color: white;
+}
+
+.action-login {
+    background-color: white;
+    color: #21B4A3;
+    border: 1px solid #21B4A3;
+}
+
+/* Подвал */
+footer {
+    background-color: #21B4A3;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-contacts {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 15px;
+}
+
+.footer-info {
+    font-size: 14px;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    color: #21B4A3;
+    font-size: 24px;
+    margin: 0;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #EAEAEA;
+    border-radius: 5px;
+    background-color: #EAEAEA;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.form-links {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-links a {
+    color: #21B4A3;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.form-links a:hover {
+    text-decoration: underline;
+}
+
+.submit-btn {
+    background-color: #4FAA39;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+/* Стили для личного кабинета */
+.account-container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.account-title {
+    color: #21B4A3;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.appointments {
+    margin-bottom: 40px;
+}
+
+.appointment-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-left: 4px solid #21B4A3;
+}
+
+.appointment-status {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.status-planned {
+    color: #4FAA39;
+}
+
+.status-cancelled {
+    color: #DB1813;
+}
+
+.status-not-confirmed {
+    color: #FFA500;
+}
+
+.appointment-details {
+    margin: 15px 0;
+}
+
+.appointment-details p {
+    margin: 5px 0;
+}
+
+.appointment-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.action-btn {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.transfer-btn {
+    background-color: #FFA500;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #DB1813;
+    color: white;
+}
+
+.confirm-btn {
+    background-color: #4FAA39;
+    color: white;
+}
+
+.edit-btn {
+    background-color: #21B4A3;
+    color: white;
+}
+
+.change-pwd-btn {
+    background-color: #4FAA39;
+    color: white;
+}
+
+.logout-btn {
+    background-color: #DB1813;
+    color: white;
+}
+
+.personal-info {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.personal-info h2 {
+    color: #21B4A3;
+    margin-top: 0;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-label {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.info-value {
+    color: #333;
+}
+
+.personal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.back-btn {
+    background-color: white;
+    color: #21B4A3;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+.appointments {
+    margin-bottom: 40px;
+    overflow-x: auto;
+    white-space: nowrap; 
+    padding-bottom: 20px; 
+    -webkit-overflow-scrolling: touch; 
+}
+
+.appointments::-webkit-scrollbar {
+    height: 8px;
+}
+
+.appointments::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.appointments::-webkit-scrollbar-thumb {
+    background: #21B4A3;
+    border-radius: 10px;
+}
+
+.appointment-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: inline-block; 
+    width: 300px; 
+    margin-right: 20px; 
+    vertical-align: top; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-left: 4px solid #21B4A3;
+    white-space: normal; 
+}
+
+.appointment-card:last-child {
+    margin-right: 0;
+}
+/* Стили для страницы записи к специалистам */
+.specialists-container {
+    max-width:1000px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.specialists-title {
+    color: #21B4A3;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.specialists-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.table-row {
+    display: flex;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.table-row.header {
+    font-weight: bold;
+    background-color: #f5f5f5;
+    border-bottom: 2px solid #21B4A3;
+}
+
+.table-cell {
+    flex: 1;
+    padding: 15px 10px;
+    text-align: left;
+}
+
+.table-cell:first-child {
+    flex: 1.2;
+}
+
+.table-cell:last-child {
+    flex: 0.8;
+    text-align: center;
+}
+
+.book-btn {
+    background-color: #4FAA39;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    min-width: 120px;
+}
+
+.book-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .table-row {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+    
+    .table-cell {
+        padding: 5px 10px;
+    }
+    
+    .table-cell:last-child {
+        text-align: left;
+        padding-top: 10px;
+    }
+    
+    .book-btn {
+        min-width: 100px;
+    }
+    }
+    /* Дополнительные стили для страницы истории пациента */
+    .patient-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .appointment-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .appointment-status {
+        font-weight: bold;
+    }
+
+    .status-planned .appointment-status {
+        color: #4FAA39;
+    }
+
+    .status-cancelled .appointment-status {
+        color: #DB1813;
+    }
+
+    .status-not-confirmed .appointment-status {
+        color: #FFA500;
+    }
+
+    .appointment-form {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .appointment-form h2 {
+        color: #21B4A3;
+        margin-top: 0;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #EAEAEA;
+        border-radius: 5px;
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    .file-attachment {
+        margin: 20px 0;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    /* Адаптивные стили */
+    @media (max-width: 768px) {
+        .patient-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .form-actions {
+            flex-direction: column;
+        }
+        
+        .file-attachment {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+  

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История пациента</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    
+    <header>
+        <div class="logo">Медицинский центр</div>
+        <div class="nav-buttons">
+            <a href="#" class="nav-button back-btn">Запись на приём</a>
+            <div class="user-nav">
+                <div class="user-nav-btn" id="userNavBtn">
+                    <span id="userNameDisplay">Войти</span>
+                    <div class="user-dropdown">
+                        <a href="personal-account.html" class="dropdown-item">Личный кабинет</a>
+                        <a href="#" class="dropdown-item logout">Выйти</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    
+    <div class="main-container">
+        <div class="account-container">
+            <div class="patient-header">
+                <h1 class="account-title">История пациента</h1>
+                <button class="action-btn edit-btn">Выбор</button>
+            </div>
+            
+            <div class="appointments">
+                <!-- Завершенный прием -->
+                <div class="appointment-card status-planned">
+                    <div class="appointment-header">
+                        <h2>Приём 22.02.25</h2>
+                        <span class="appointment-status">Статус: завершён</span>
+                    </div>
+                    <div class="appointment-details">
+                        <p><strong>Специалист:</strong> Иванов Иван Иванович, терапевт</p>
+                        <p><strong>Жалобы пациента:</strong> много стагнации, нехватка мотивации, избыток прокрастинации</p>
+                        <p><strong>Итоги приёма (диагноз, рекомендации):</strong> завести домашнее животное, ходить за ним по пятам, трогать траву</p>
+                    </div>
+                    <div class="appointment-actions">
+                        <button class="action-btn confirm-btn">Записать повторно</button>
+                    </div>
+                </div>
+                
+                <!-- Отмененный прием -->
+                <div class="appointment-card status-cancelled">
+                    <div class="appointment-header">
+                        <h2>Приём 22.02.25</h2>
+                        <span class="appointment-status">Статус: отменён</span>
+                    </div>
+                    <div class="appointment-details">
+                        <p><strong>Специалист:</strong> Иванов Иван Иванович, терапевт</p>
+                        <p><strong>Причина отмены:</strong> усталость специалиста</p>
+                    </div>
+                    <div class="appointment-actions">
+                        <button class="action-btn confirm-btn">Записать повторно</button>
+                    </div>
+                </div>
+                
+                <!-- Прием в обработке -->
+                <div class="appointment-card status-not-confirmed">
+                    <div class="appointment-header">
+                        <h2>Приём 22.02.25</h2>
+                        <span class="appointment-status">Статус: обработка результатов</span>
+                    </div>
+                    <div class="appointment-details">
+                        <p><strong>Специалист:</strong> Иванов Иван Иванович, терапевт</p>
+                        <p><strong>Жалобы пациента:</strong> много стагнации, нехватка мотивации, избыток прокрастинации</p>
+                        <p><strong>Примерное время готовности результатов:</strong> 2 суток с даты приёма</p>
+                    </div>
+                    <div class="appointment-actions">
+                        <button class="action-btn confirm-btn">Записать повторно</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Личная информация -->
+            <div class="personal-info">
+                <h2>Личная информация пациента</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">ФИО:</span>
+                        <span class="info-value">Александров Александр Александрович</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Дата рождения:</span>
+                        <span class="info-value">14 апреля 2006</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Серия, номер паспорта:</span>
+                        <span class="info-value">8888 888888</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">СНИЛС:</span>
+                        <span class="info-value">888-888-888 88</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Номер полиса:</span>
+                        <span class="info-value">888888888888888</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Номер мед. карты:</span>
+                        <span class="info-value">888888</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Email:</span>
+                        <span class="info-value">patient.mail@yandex.ru</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Номер телефона:</span>
+                        <span class="info-value">7-888-888-88-88</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Форма итогов приема -->
+            <div class="appointment-form">
+                <h2>Итоги приёма</h2>
+                <div class="form-group">
+                    <label for="appointment-result">Введите итоги приёма (диагноз, рекомендации):</label>
+                    <textarea id="appointment-result" rows="5"></textarea>
+                </div>
+                <div class="file-attachment">
+                    <p><strong>Прикреплено:</strong> Анализы.pdf</p>
+                    <button class="action-btn edit-btn">Прикрепить файлы</button>
+                </div>
+                <div class="form-actions">
+                    <button class="action-btn confirm-btn">Записать повторно</button>
+                    <button class="action-btn transfer-btn">Завершить приём</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Футер-->
+    <footer>
+        <div class="footer-contacts">
+            <div>Адрес: ул. Медицинская, 3</div>
+            <div>Телефон регистратуры: +7(343)777-88-66</div>
+            <div>Электронная почта: 4musketer.registry@yandex.ru</div>
+        </div>
+        <div class="footer-info">© 2023 Медицинский центр. Все права защищены.</div>
+    </footer>
+    <script src="js/auth.js"></script>
+    <script src="js/user-nav.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/account.js"></script>
+</body>
+</html>

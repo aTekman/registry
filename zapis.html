@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись к специалисту</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <header>
+        <div class="logo">Медицинский центр</div>
+        <div class="nav-buttons">
+            <a href="#" class="nav-button back-btn">Запись на приём</a>
+            <div class="user-nav">
+                <div class="user-nav-btn" id="userNavBtn">
+                    <span id="userNameDisplay">Войти</span>
+                    <div class="user-dropdown">
+                        <a href="personal-account.html" class="dropdown-item">Личный кабинет</a>
+                        <a href="#" class="dropdown-item logout">Выйти</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Основной контент -->
+    <div class="specialists-container">
+        <h1 class="specialists-title">Записаться к специалисту</h1>
+        
+        <div class="specialists-table">
+            <div class="table-row header">
+                <div class="table-cell">Специальность</div>
+                <div class="table-cell">Врач</div>
+                <div class="table-cell">Действие</div>
+            </div>
+            
+            <div class="table-row">
+                <div class="table-cell">Терапевт</div>
+                <div class="table-cell">Иванов И. И.</div>
+                <div class="table-cell">
+                    <button class="action-btn book-btn">Записаться</button>
+                </div>
+            </div>
+            
+            <div class="table-row">
+                <div class="table-cell">Кардиолог</div>
+                <div class="table-cell">Сидоров С. С.</div>
+                <div class="table-cell">
+                    <button class="action-btn book-btn">Записаться</button>
+                </div>
+            </div>
+            
+            <div class="table-row">
+                <div class="table-cell">Невролог</div>
+                <div class="table-cell">-</div>
+                <div class="table-cell">
+                    <button class="action-btn book-btn" disabled>Нет врачей</button>
+                </div>
+            </div>
+            
+            <div class="table-row">
+                <div class="table-cell">Эндокринолог</div>
+                <div class="table-cell">-</div>
+                <div class="table-cell">
+                    <button class="action-btn book-btn" disabled>Нет врачей</button>
+                </div>
+            </div>
+            
+            <div class="table-row">
+                <div class="table-cell">Гастроэнтеролог</div>
+                <div class="table-cell">-</div>
+                <div class="table-cell">
+                    <button class="action-btn book-btn" disabled>Нет врачей</button>
+                </div>
+            </div>
+            
+            <div class="table-row">
+                <div class="table-cell">ЛОР</div>
+                <div class="table-cell">-</div>
+                <div class="table-cell">
+                    <button class="action-btn book-btn" disabled>Нет врачей</button>
+                </div>
+            </div>
+            
+            <div class="table-row">
+                <div class="table-cell">Офтальмолог</div>
+                <div class="table-cell">-</div>
+                <div class="table-cell">
+                    <button class="action-btn book-btn" disabled>Нет врачей</button>
+                </div>
+            </div>
+            
+            <div class="table-row">
+                <div class="table-cell">Ортопед</div>
+                <div class="table-cell">-</div>
+                <div class="table-cell">
+                    <button class="action-btn book-btn" disabled>Нет врачей</button>
+                </div>
+            </div>
+            
+            <div class="table-row">
+                <div class="table-cell">Дерматолог</div>
+                <div class="table-cell">-</div>
+                <div class="table-cell">
+                    <button class="action-btn book-btn" disabled>Нет врачей</button>
+                </div>
+            </div>
+            
+            <div class="table-row">
+                <div class="table-cell">Мануальный терапевт</div>
+                <div class="table-cell">-</div>
+                <div class="table-cell">
+                    <button class="action-btn book-btn" disabled>Нет врачей</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Футер -->
+    <footer>
+        <div class="footer-contacts">
+            <div>Адрес: ул. Медицинская, 3</div>
+            <div>Телефон регистратуры: +7(343)777-88-66</div>
+            <div>Электронная почта: 4musketer.registry@yandex.ru</div>
+        </div>
+        <div class="footer-info">© 2023 Медицинский центр. Все права защищены.</div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/user-nav.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/account.js"></script>
+</body>
+</html>
