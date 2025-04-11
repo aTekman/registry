@@ -1,11 +1,9 @@
 body {
-    background-image: url('../images/background.jpg'); 
+    background-image: url('../images/background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-}
-body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -429,7 +427,7 @@ footer {
 }
 /* Стили для страницы записи к специалистам */
 .specialists-container {
-    max-width: 1000px;
+    max-width:1000px;
     margin: 30px auto;
     padding: 20px;
     background-color: white;
@@ -510,4 +508,102 @@ footer {
     .book-btn {
         min-width: 100px;
     }
-}
+    }
+    /* Дополнительные стили для страницы истории пациента */
+    .patient-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .appointment-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .appointment-status {
+        font-weight: bold;
+    }
+
+    .status-planned .appointment-status {
+        color: #4FAA39;
+    }
+
+    .status-cancelled .appointment-status {
+        color: #DB1813;
+    }
+
+    .status-not-confirmed .appointment-status {
+        color: #FFA500;
+    }
+
+    .appointment-form {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .appointment-form h2 {
+        color: #21B4A3;
+        margin-top: 0;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #EAEAEA;
+        border-radius: 5px;
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    .file-attachment {
+        margin: 20px 0;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    /* Адаптивные стили */
+    @media (max-width: 768px) {
+        .patient-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .form-actions {
+            flex-direction: column;
+        }
+        
+        .file-attachment {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+  
