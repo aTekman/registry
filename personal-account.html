@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <header>
+        <div class="logo">Медицинский центр</div>
+        <div class="nav-buttons">
+            <a href="#" class="nav-button back-btn">Запись на приём</a>
+            <div class="user-nav">
+                <div class="user-nav-btn" id="userNavBtn">
+                    <span id="userNameDisplay">Войти</span>
+                    <div class="user-dropdown">
+                        <a href="personal-account.html" class="dropdown-item">Личный кабинет</a>
+                        <a href="#" class="dropdown-item logout">Выйти</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Основной контент -->
+    <div class="account-container">
+        <h1 class="account-title">Ваши приёмы</h1>
+        
+        <!-- Блок с приёмами -->
+        <div class="appointments">
+            <div class="appointment-card">
+                <h3>Приём 22.02.25</h3>
+                <p class="appointment-status status-planned">Статус: запланирован</p>
+                <div class="appointment-details">
+                    <p><strong>Специалист:</strong> Александров Александр Александрович, эндокринолог</p>
+                    <p><strong>Кабинет:</strong> 303</p>
+                    <p><strong>Время:</strong> 13:00</p>
+                </div>
+                <div class="appointment-actions">
+                    <button class="action-btn transfer-btn">Перенести</button>
+                    <button class="action-btn cancel-btn">Отменить</button>
+                </div>
+            </div>
+            
+            <div class="appointment-card">
+                <h3>Приём 22.02.25</h3>
+                <p class="appointment-status status-cancelled">Статус: отменён</p>
+                <div class="appointment-details">
+                    <p><strong>Специалист:</strong> Иванов Иван Иванович, терапевт</p>
+                    <p><strong>Причина отмены:</strong> усталость специалиста</p>
+                </div>
+            </div>
+            
+            <div class="appointment-card">
+                <h3>Приём 22.02.25</h3>
+                <p class="appointment-status status-not-confirmed">Статус: не подтверждён</p>
+                <div class="appointment-details">
+                    <p><strong>Специалист:</strong> Иванов Иван Иванович, терапевт</p>
+                </div>
+                <div class="appointment-actions">
+                    <button class="action-btn confirm-btn">Подтвердить</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Личная информация -->
+        <div class="personal-info">
+            <h2>Личная информация</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">ФИО:</span>
+                    <span class="info-value">Александров Александр Александрович</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Дата рождения:</span>
+                    <span class="info-value">14 апреля 2006</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Серия, номер паспорта:</span>
+                    <span class="info-value">888-888888</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">СНИЛС:</span>
+                    <span class="info-value">888-888-888-88</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Номер полиса:</span>
+                    <span class="info-value">888888888888888</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Номер мед. карты:</span>
+                    <span class="info-value">888888</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Email:</span>
+                    <span class="info-value"><a href="mailto:patient.mail@yandex.ru">patient.mail@yandex.ru</a></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Номер телефона:</span>
+                    <span class="info-value">7-888-888-88-88</span>
+                </div>
+            </div>
+            
+            <div class="personal-actions">
+                <button class="action-btn edit-btn">Изменить данные</button>
+                <button class="action-btn change-pwd-btn">Сменить пароль</button>
+                <button class="action-btn logout-btn">Выйти</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Футер-->
+    <footer>
+        <div class="footer-contacts">
+            <div>Адрес: ул. Медицинская, 3</div>
+            <div>Телефон регистратуры: +7(343)777-88-66</div>
+            <div>Электронная почта: 4musketer.registry@yandex.ru</div>
+        </div>
+        <div class="footer-info">© 2023 Медицинский центр. Все права защищены.</div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/user-nav.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/account.js"></script>
+</body>
+</html>
